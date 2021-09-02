@@ -47,7 +47,7 @@ public class Ch05Controller {
 
 		if (userAgent.contains("Windows NT")) {
 			logger.info("client OS Windows");
-		} else if (userAgent.contains("Windows NT")) {
+		} else if (userAgent.contains("Mac")) {
 			logger.info("client OS: macOS");
 		}
 
@@ -108,7 +108,7 @@ public class Ch05Controller {
 		return "redirect:/ch05/content";
 	}
 
-	// JSON 쿠기 생성
+	// JSON 쿠키 생성
 	@GetMapping("/createjsoncookie")
 	public String createJsonCookie(HttpServletResponse response) throws Exception {
 		logger.info("실행");
@@ -130,7 +130,7 @@ public class Ch05Controller {
 		return "redirect:/ch05/content";
 	}
 
-	// JSON 쿠기 읽기
+	// JSON 쿠키 읽기
 	@GetMapping("/getjsoncookie")
 	public String getJsonCookie(@CookieValue String user) {
 		logger.info("실행");
