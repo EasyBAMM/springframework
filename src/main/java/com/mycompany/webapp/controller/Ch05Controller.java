@@ -42,12 +42,13 @@ public class Ch05Controller {
 		logger.info("requestURI: " + request.getRequestURI());
 		logger.info("client IP: " + request.getRemoteAddr());
 		logger.info("contextRoot: " + request.getContextPath());
+
 		String userAgent = request.getHeader("User-Agent");
 		logger.info("User-Agent: " + userAgent);
 
 		if (userAgent.contains("Windows NT")) {
 			logger.info("client OS Windows");
-		} else if (userAgent.contains("Mac")) {
+		} else if (userAgent.contains("Macintosh")) {
 			logger.info("client OS: macOS");
 		}
 
