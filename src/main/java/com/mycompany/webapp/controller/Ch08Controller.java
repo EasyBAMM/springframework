@@ -1,5 +1,9 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -123,18 +127,22 @@ public class Ch08Controller {
 	}
 
 	// AJAX 로그아웃
-	@GetMapping(value = "/logoutAjax", produces = "application/json; charset=UTF-8")
-	@ResponseBody
-	public String logoutAjax(HttpSession session) {
+	@GetMapping("/logoutAjax")
+	public void logoutAjax(HttpSession session, HttpServletResponse response) throws IOException {
 		logger.info("실행");
 
 		session.invalidate();
+
+		response.setContentType("application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
 
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
 		String json = jsonObject.toString();
 
-		return json;
+		pw.println(json);
+		// pw.flush();
+		// pw.close();
 	}
 
 	// @SetAttributes - class에 적혀있음

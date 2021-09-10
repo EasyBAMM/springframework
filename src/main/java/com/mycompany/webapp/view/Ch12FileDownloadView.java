@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.servlet.view.AbstractView;
 
 @Component
@@ -57,9 +56,17 @@ public class Ch12FileDownloadView extends AbstractView {
 		OutputStream os = response.getOutputStream();
 
 		// 입력스트림 -> 출력스트림
-		FileCopyUtils.copy(is, os);
+		// FileCopyUtils.copy(is, os);
+		byte[] data = new byte[1024];
+		int readByteNum = -1;
+
+		while ((readByteNum = is.read(data)) != -1) {
+			os.write(data, 0, readByteNum);
+			os.flush();
+		}
+
 		is.close();
-		os.flush();
+		// os.flush();
 		os.close();
 	}
 
