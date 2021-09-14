@@ -1,4 +1,4 @@
-package com.mycompany.webapp.dto;
+package com.mycompany.webapp.service;
 
 import javax.annotation.Resource;
 
@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.webapp.dao.Ch14MemberDao;
+import com.mycompany.webapp.dto.Ch14Member;
 
 @Service
 public class Ch14MemberLoginService {

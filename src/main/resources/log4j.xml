@@ -17,6 +17,10 @@ PUBLIC "-//APACHE//DTD LOG4J 1.2//EN"
 		<level value="info" />
 	</logger>
 	
+	<logger name="jdbc.sqltiming">
+		<level value="info" />
+	</logger>
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="info" />
