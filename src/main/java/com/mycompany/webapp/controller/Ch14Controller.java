@@ -22,10 +22,9 @@ import com.mycompany.webapp.dto.Ch14Board;
 import com.mycompany.webapp.dto.Ch14Member;
 import com.mycompany.webapp.dto.Pager;
 import com.mycompany.webapp.service.Ch14BoardService;
-import com.mycompany.webapp.service.Ch14MemberLoginService;
-import com.mycompany.webapp.service.Ch14MemberLoginService.LoginResult;
 import com.mycompany.webapp.service.Ch14MemberService;
 import com.mycompany.webapp.service.Ch14MemberService.JoinResult;
+import com.mycompany.webapp.service.Ch14MemberService.LoginResult;
 
 @Controller
 @RequestMapping("/ch14")
@@ -189,7 +188,7 @@ public class Ch14Controller {
 
 	// 로그인 처리
 	@Resource
-	private Ch14MemberLoginService memberLoginService;
+	private Ch14MemberService memberLoginService;
 
 	@GetMapping("/login")
 	public String loginForm() {
