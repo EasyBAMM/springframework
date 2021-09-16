@@ -3,6 +3,7 @@ package com.mycompany.webapp.exception;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -32,6 +33,14 @@ public class Ch10ExceptionHandler {
 	}
 
 	@ExceptionHandler
+	public String handleCh16NotFoundAccountException(Ch16NotFoundAccountException e, Model model) {
+		logger.info("실행");
+		e.printStackTrace();
+		model.addAttribute("error", e.getMessage());
+		return "error/notFoundAccountException";
+	}
+
+	@ExceptionHandler
 	public String handleCh10SoldOutException(Ch10SoldOutException e) {
 		logger.info("실행");
 		e.printStackTrace();
@@ -39,7 +48,7 @@ public class Ch10ExceptionHandler {
 	}
 
 	@ExceptionHandler
-	public String handleRuntimeException(RuntimeException e) {
+	public String handleOtherException(Exception e) {
 		logger.info("실행");
 		e.printStackTrace();
 		return "error/500";
